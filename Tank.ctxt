@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Tank
+comment1.params=
+comment1.target=Tank()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ moveTank()
+comment4.params=
+comment4.target=void\ checkCollisions()
+comment5.params=
+comment5.target=void\ handleKeys()
+comment6.params=
+comment6.target=void\ handelImageSelector()
+comment7.params=
+comment7.target=void\ updateHud()
+numComments=8
