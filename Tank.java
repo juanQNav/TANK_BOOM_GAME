@@ -1,59 +1,45 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Tank extends Actor
 {
-    private static final int COUNT_DOWN_STAR_VALUE = 11;
-    private static final int OFFSET = 8;
-    private static final int DIRECTION_RIGHT = 0;
-    private static final int DIRECTION_LEFT = 1;
-    private static final int DIRECTION_UP = 2;
-    private static final int DIRECTION_DOWN = 3;
+    private static final int OFFSET = 6;
+    protected static final int DIRECTION_RIGHT = 0;
+    protected static final int DIRECTION_LEFT = 1;
+    protected static final int DIRECTION_UP = 2;
+    protected static final int DIRECTION_DOWN = 3;
     
-    private int mouthDelay = COUNT_DOWN_STAR_VALUE;
+    protected String []images; 
+    protected int direction = DIRECTION_RIGHT;
     
-    private String [][]images; 
-    private int imageIndex;
-    private int direction = DIRECTION_RIGHT;
-    
-    private int score;
-    
-    private boolean[] move = {true,true,true,true};
-    private int directionCollision;
+    protected boolean[] move = {true,true,true,true};
+    protected int directionCollision = DIRECTION_RIGHT;
     
     public Tank(){
-        images = new String[4][2];
+        images = new String[4];
             
-        images[DIRECTION_RIGHT] = new String[]{
-            "images/tank_right.png",
+        images[DIRECTION_RIGHT] = new String(
             "images/tank_right.png"
-        };
-        images[DIRECTION_LEFT] = new String[]{
-            "images/tank_left.png",
+        );
+        images[DIRECTION_LEFT] = new String(
             "images/tank_left.png"
-        };
-        images[DIRECTION_UP] = new String[]{
-            "images/tank_up.png",
+        );
+        images[DIRECTION_UP] = new String(
             "images/tank_up.png"
-        };
-        images[DIRECTION_DOWN] = new String[]{
-            "images/tank_down.png",
+        );
+        images[DIRECTION_DOWN] = new String(
             "images/tank_down.png"
-        };        
-        setImage(images[DIRECTION_RIGHT][0]);
+        );        
+        setImage(images[DIRECTION_RIGHT]);
     }
     public void act()
     {
-        handleKeys();
-        
         moveTank();
         
-        handelImageSelector();
+        handleImageSelector();
         
-        checkCollisions();
-        
-        updateHud();
+        checkCollisions();   
      
     }
-    private void moveTank(){ 
+    protected void moveTank(){ 
             switch(direction){
             case DIRECTION_RIGHT:
                 if(move[DIRECTION_RIGHT]){
@@ -81,53 +67,42 @@ public class Tank extends Actor
                 break;
     }
     }
-    private void checkCollisions(){
-        Wall wall = (Wall)this.getOneIntersectingObject(Wall.class);
+    protected void checkCollisions(){
+      Wall wall = (Wall)this.getOneIntersectingObject(Wall.class);
+        World world = getWorld();
+        
           if(wall != null){
          directionCollision = direction;
          move[directionCollision] = false;
          switch (directionCollision){
-         case DIRECTION_RIGHT:
-                    setLocation(getX() - 2, getY());
+             case DIRECTION_RIGHT:
+                    setLocation(getX() - 5, getY());
                 break;
             case DIRECTION_LEFT:
-                    setLocation(getX() + 2, getY());
+                    setLocation(getX() + 5, getY());
                 break;
             case DIRECTION_UP:
-                    setLocation(getX(),getY() + 2);
+                    setLocation(getX(),getY() + 5);
                 break;
             case DIRECTION_DOWN:
-                    setLocation(getX(),getY() - 2);
+                    setLocation(getX(),getY() - 5);
                 break;
-    }
-    }
-    }
-    private void handleKeys(){
-            if(Greenfoot.isKeyDown("left")){
-        direction =  DIRECTION_LEFT;
-    }else if(Greenfoot.isKeyDown("right")){
-        direction =  DIRECTION_RIGHT;
-    }else if(Greenfoot.isKeyDown("up")){
-        direction = DIRECTION_UP;
-    }else if(Greenfoot.isKeyDown("down")){
-        direction = DIRECTION_DOWN;
-    }
-    }
-    
-    private void handelImageSelector(){
-        mouthDelay --;
-     if(mouthDelay == 0){
-         imageIndex = (imageIndex + 1) % images[direction].length;
-         
-         setImage(images[direction][imageIndex]);
-         
-         mouthDelay = COUNT_DOWN_STAR_VALUE;
-     }
-    }
-    
-    private void updateHud(){
-         World world = getWorld();
+            }
+        }
+        if (getX() <= 20) {
+            setLocation(22, getY());
+        } else if (getX() >= getWorld().getWidth() - 20) {
+            setLocation(getWorld().getWidth() - 2, getY());
+        }
         
-        world.showText("Score: " + score, world.getWidth() - 100,20);
+        if (getY() <= 20) {
+            setLocation(getX(), 22);
+        } else if (getY() >= getWorld().getHeight() - 20) {
+            setLocation(getX(), getWorld().getHeight() - 22);
+        }
     }
-}
+    
+    protected void handleImageSelector(){
+         setImage(images[direction]);
+    }
+    }

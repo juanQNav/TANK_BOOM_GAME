@@ -20,8 +20,8 @@ public class LevelOne extends World
         prepare();
     }
     private void prepare(){
-        addObject(new Tank(),70,60);
-        
+        addObject(new Player(), (getWidth() - 50)/2, (getHeight() - 50)/2);
+        addObject(new Enemy(),70,180);
         
         //walls on the far left
         addObject(new Wall(),150,10);
@@ -30,13 +30,14 @@ public class LevelOne extends World
         addObject(new Wall(),150,85);
         addObject(new Wall(),150,110);
         addObject(new Wall(),150,135);
-        addObject(new Wall(),150,160);
-        addObject(new Wall(),150,185);
-        addObject(new Wall(),150,210);
-        addObject(new Wall(),150,235);
+        
         addObject(new Wall(),150,260);
         addObject(new Wall(),150,285);
         addObject(new Wall(),150,310);
         addObject(new Wall(),150,335);
+        addObject(new Wall(),150,360);
+        addObject(new Wall(),150,385);
+        addObject(new Wall(),150,410);
+        addObject(new Wall(),150,435);
     }
 }
