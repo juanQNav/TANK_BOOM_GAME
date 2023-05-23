@@ -61,12 +61,12 @@ public class Player extends Tank
         world.showText("Score: " + score, world.getWidth() - 100,20);
     }
     
-    private void shoot(){
-        World world = getWorld();
-        
-        world.addObject(new Proyectile(direction), getX(), getY());
-    }
     public void setScore(int score){
         this.score += score;
+    }
+    protected void shoot(){
+        World world = getWorld();
+        
+        world.addObject(new Proyectile(direction, false), getX(), getY());
     }
 }

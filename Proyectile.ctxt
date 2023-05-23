@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Proyectile
-comment1.params=direction
-comment1.target=Proyectile(int)
+comment1.params=direction\ fromEnemy
+comment1.target=Proyectile(int,\ boolean)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=

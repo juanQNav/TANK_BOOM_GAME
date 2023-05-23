@@ -109,7 +109,7 @@ public class Menu extends World
     {
         switch(option){
             case 1:
-                   Greenfoot.setWorld(new LevelOne()); 
+                   Greenfoot.setWorld(new LevelOne());
                 break;
             case 2:
                     Greenfoot.setWorld(new Record());

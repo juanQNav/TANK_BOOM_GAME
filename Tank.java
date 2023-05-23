@@ -38,7 +38,6 @@ public class Tank extends Actor
         handleImageSelector();
 
         checkCollisions();   
-
     }
 
     protected void moveTank(){ 
@@ -72,9 +71,11 @@ public class Tank extends Actor
 
     protected void checkCollisions(){
         Wall wall = (Wall)this.getOneIntersectingObject(Wall.class);
+        HardBlock hardBlock = (HardBlock)this.getOneIntersectingObject(HardBlock.class);
+        
         World world = getWorld();
 
-        if(wall != null){
+        if(wall != null || hardBlock != null){
             directionCollision = direction;
             move[directionCollision] = false;
             switch (directionCollision){
@@ -108,4 +109,6 @@ public class Tank extends Actor
     protected void handleImageSelector(){
         setImage(images[direction]);
     }
+    
+    
 }
