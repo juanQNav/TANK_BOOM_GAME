@@ -403,7 +403,20 @@ public class LevelOne extends World
         addObject(new Wall(),175,500);
         addObject(new Wall(),200,500);
         
+        addObject(new Wall(),75,420);
+        addObject(new Wall(),100,420);
+        addObject(new Wall(),125,420);
         addObject(new Wall(),150,420);
+        
+        addObject(new Wall(),400,420);
+        addObject(new Wall(),425,420);
+        addObject(new Wall(),450,420);
+        addObject(new Wall(),475,420);
+        
+        addObject(new HardBlock(),400,500);
+        addObject(new HardBlock(),425,500);
+        addObject(new HardBlock(),450,500);
+        addObject(new HardBlock(),475,500);
         
     }
 }
