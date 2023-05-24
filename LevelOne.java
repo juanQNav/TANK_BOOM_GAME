@@ -355,14 +355,55 @@ public class LevelOne extends World
         addObject(new Bush(),275,300);
         addObject(new Bush(),275,320);
         addObject(new Bush(),275,340);
+        //hidden blocks
+        addObject(new HardBlock(),275,340);
+        addObject(new HardBlock(),275,360);
+        addObject(new Bush(),275,340);
+        addObject(new Bush(),275,360);
+        addObject(new Bush(),275,380);
+        addObject(new Bush(),275,400);
+        addObject(new Bush(),275,420);
+        addObject(new Bush(),275,440);
+        addObject(new Bush(),275,460);
+        addObject(new Bush(),275,480);
+        addObject(new Bush(),275,500);
+        addObject(new Bush(),275,520);
+        addObject(new Bush(),275,540);
+        addObject(new Bush(),275,560);
+        addObject(new Bush(),275,580);
+        
+        
         
         addObject(new Bush(),300,300);
         addObject(new Bush(),300,320);
         addObject(new Bush(),300,340);
+        addObject(new Bush(),300,340);
+        addObject(new Bush(),300,360);
+        addObject(new Bush(),300,380);
+        addObject(new Bush(),300,400);
+        addObject(new Bush(),300,420);
+        addObject(new Bush(),300,440);
+        addObject(new Bush(),300,460);
+        addObject(new Bush(),300,480);
+        addObject(new Bush(),300,500);
+        //hidden blocks
+        addObject(new HardBlock(),300,520);
+        addObject(new HardBlock(),300,540);
+        addObject(new Bush(),300,520);
+        addObject(new Bush(),300,540);
+        addObject(new Bush(),300,560);
+        addObject(new Bush(),300,580);
+        
         
         addObject(new HardBlock(),325,300);
         addObject(new HardBlock(),325,320);
         addObject(new HardBlock(),325,340);
+        
+        addObject(new Wall(),150,500);
+        addObject(new Wall(),175,500);
+        addObject(new Wall(),200,500);
+        
+        addObject(new Wall(),150,420);
         
     }
 }
