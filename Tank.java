@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Tank extends Actor
 {
-    private static final int OFFSET = 6;
+    private static final int OFFSET =4;
     protected static final int DIRECTION_RIGHT = 0;
     protected static final int DIRECTION_LEFT = 1;
     protected static final int DIRECTION_UP = 2;

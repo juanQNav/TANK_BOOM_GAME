@@ -51,6 +51,7 @@ public class Proyectile extends Actor
            wall.getWorld().removeObject(wall);
         }else if(hardBlock != null){
             getWorld().removeObject(this);
+            hardBlock.getWorld().removeObject(hardBlock);
         }else if (getX() <= 20) {
             getWorld().removeObject(this);
         } else if (getX() >= getWorld().getWidth() - 20) {
