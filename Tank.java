@@ -14,21 +14,7 @@ public class Tank extends Actor
     protected int directionCollision = DIRECTION_RIGHT;
 
     public Tank(){
-        images = new String[4];
-
-        images[DIRECTION_RIGHT] = new String(
-            "images/tank_right.png"
-        );
-        images[DIRECTION_LEFT] = new String(
-            "images/tank_left.png"
-        );
-        images[DIRECTION_UP] = new String(
-            "images/tank_up.png"
-        );
-        images[DIRECTION_DOWN] = new String(
-            "images/tank_down.png"
-        );        
-        setImage(images[DIRECTION_RIGHT]);
+        
     }
 
     public void act()

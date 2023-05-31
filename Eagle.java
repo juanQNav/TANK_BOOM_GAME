@@ -1,9 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Wall extends Block
-{
-    public Wall(){
-        super(1);
-    }
-}
 
+public class Eagle extends Actor
+{
+   
+}

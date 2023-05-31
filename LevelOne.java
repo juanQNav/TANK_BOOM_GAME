@@ -2,20 +2,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class LevelOne extends World
 {
-
+    private SimpleTimer timer = new SimpleTimer();
+    private int second;
+    private int score = 0;
+    private Player player= new Player();
+    
     public LevelOne()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(900, 600, 1);
+        super(900, 600,1);
         prepare();
+        setBackground("background.png");
     }
-
+    public void act()
+    {
+        // Add your action code here.
+        updateHud();
+    }
     private void prepare(){
-        addObject(new Player(), (getWidth() - 50)/2, (getHeight() - 50)/2);
-        addObject(new Enemy(),70,180);
-        addObject(new Enemy(),70,500);
-        addObject(new Enemy(),900,500);
-        addObject(new Enemy(),900,180);
+        addObject(player, (getWidth() - 50)/2, (getHeight() + 100)/2);
+        addObject(new Eagle(), (getWidth() - 50)/2, (getHeight() - 50)/2);
+        addObject(new Enemy(1),70,180);
+        addObject(new Enemy(1),70,500);
+        addObject(new Enemy(1),900,500);
+        addObject(new Enemy(1),900,180);
         
         //walls on the far left
         
@@ -418,5 +428,17 @@ public class LevelOne extends World
         addObject(new HardBlock(),450,500);
         addObject(new HardBlock(),475,500);
         
+    }
+    public void updateScore(int score){
+        this.score += score;
+    }
+     private void updateHud(){
+        showText("Score: " + score, getWidth() - 100,20);
+        showText("Lives: " + player.getLifes(), getWidth() - 100,40);
+         if (timer.millisElapsed() >= 1000) {
+            timer.mark();
+            second++;
+            showText("Seconds: " + second, getWidth() - 100, 60);
+        }
     }
 }
