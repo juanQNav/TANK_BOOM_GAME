@@ -2,29 +2,21 @@ import greenfoot.*;
 
 public class Enemy extends Tank
 {
-    private static String imageRight = "images/tank2_right.png";
-    private static String imageLeft = "images/tank2_left.png";
-    private static String imageUp = "images/tank2_up.png";
-    private static String imageDown = "images/tank2_down.png";
-    private SimpleTimer timer = new SimpleTimer();
-    private SimpleTimer timerShoot = new SimpleTimer();
-    private int lifes;
-    private boolean acting = true;
-    private SimpleTimer boom_delay = new SimpleTimer();
+    private static final String IMAGE_RIGHT = "images/tank2_right.png";
+    private static final String IMAGE_LEFT = "images/tank2_left.png";
+    private static final String IMAGE_UP = "images/tank2_up.png";
+    private static final String IMAGE_DOWN = "images/tank2_down.png";
+    private SimpleTimer timerMove = new SimpleTimer();
+    
+    
+    
     public Enemy(int lifes){
-        this.lifes = lifes;
-        images = new String[4];
-
-        images[DIRECTION_RIGHT] = new String(imageRight);
-        images[DIRECTION_LEFT] = new String(imageLeft);
-        images[DIRECTION_UP] = new String(imageUp);
-        images[DIRECTION_DOWN] = new String(imageDown);        
-        setImage(images[DIRECTION_RIGHT]);
+         super(IMAGE_RIGHT, IMAGE_LEFT, IMAGE_UP,IMAGE_DOWN, lifes);
     }
-
+    
     public void act()
     {
-        if(acting){
+        if(isActing()){
 
             checkCollisions();
 
@@ -34,13 +26,13 @@ public class Enemy extends Tank
 
             atack();
         }
-        checkLifes();
+        checkCountShoot();
     }
 
     private void randomMove(){
-        if(timer.millisElapsed() >= 2000){
+        if(timerMove.millisElapsed() >= 2000){
             direction = (int) (Math.random() * 4);
-            timer.mark();
+            timerMove.mark();
         }
         moveTank();
     }
@@ -52,32 +44,23 @@ public class Enemy extends Tank
         }
     }
 
-    private void shoot(){
+    protected void shoot(){
         World world = getWorld();
 
-        world.addObject(new Proyectile(direction, true), getX(), getY());
+        world.addObject(new Projectile(direction, true), getX(), getY());
     }
 
-    private void checkLifes() {
-        if (lifes <= 0 && acting) {
-            explodes();
+    protected void checkCountShoot() {
+        if (countShoot <= 0 && isActing()) {
+            showBoomExplodes();
             acting = false;
             boom_delay.mark();
         }
-        if (!acting && boom_delay.millisElapsed() >= 200) {
+        if (!isActing() && boom_delay.millisElapsed() >= 200) {
+            Level level =(Level) getWorld();
+            level.updateEnemyDied(1);
             getWorld().removeObject(this);
         }
     }
 
-    private void explodes(){
-        setImage("images/boom1.png");
-    }
-
-    public void updateLifes(int lifes){
-        this.lifes += lifes;
-    }
-
-    public int getLifes(){
-        return lifes;
-    }
 }

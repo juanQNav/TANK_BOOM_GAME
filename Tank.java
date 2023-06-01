@@ -1,29 +1,43 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-public class Tank extends Actor
+public abstract class Tank extends Actor
 {
-    private static final int OFFSET =4;
+    private static final int OFFSET = 3;
     protected static final int DIRECTION_RIGHT = 0;
     protected static final int DIRECTION_LEFT = 1;
     protected static final int DIRECTION_UP = 2;
     protected static final int DIRECTION_DOWN = 3;
-
+    private static final String IMAGE_EXPLOSION= "images/boom1.png";
+    
     protected String []images; 
+    private static String imageRight;
+    private static String imageLeft;
+    private static String imageUp;
+    private static String imageDown;
+    protected int countShoot;
+    protected int previousCountShoot = 4;
     protected int direction = DIRECTION_RIGHT;
-
     protected boolean[] move = {true,true,true,true};
     protected int directionCollision = DIRECTION_RIGHT;
-
-    public Tank(){
+    protected boolean acting = true;
+    protected SimpleTimer boom_delay = new SimpleTimer();
+    protected SimpleTimer timerShoot = new SimpleTimer();
+    
+    public Tank(String imageRight, String imageLeft, String imageUp, String imageDown, int countShoot){
+        images = new String [4];
         
+        images[DIRECTION_RIGHT] = imageRight;
+        images[DIRECTION_LEFT] = imageLeft;
+        images[DIRECTION_UP] = imageUp;
+        images[DIRECTION_DOWN] = imageDown;
+        
+        setImage(images[DIRECTION_RIGHT]);
+        this.countShoot = countShoot;
+        previousCountShoot = countShoot;
     }
 
     public void act()
     {
-        moveTank();
-
-        handleImageSelector();
-
-        checkCollisions();   
+               
     }
 
     protected void moveTank(){ 
@@ -96,5 +110,25 @@ public class Tank extends Actor
         setImage(images[direction]);
     }
     
+    public void updateCountShoot(int countShoot){
+        this.countShoot += countShoot;
+    }
+
+    public int getCountShoot(){
+        return countShoot;
+    }
     
+    protected void showBoomExplodes(){
+        setImage(IMAGE_EXPLOSION);
+    }
+    protected boolean isActing(){
+        if(acting){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    protected abstract void checkCountShoot();
+    
+    protected abstract void shoot();
 }

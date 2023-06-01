@@ -13,7 +13,7 @@ public class Block extends Actor
     }
 
     private void checkShoot() {
-        Proyectile proyectile = (Proyectile) getOneIntersectingObject(Proyectile.class);
+        Projectile proyectile = (Projectile) getOneIntersectingObject(Projectile.class);
 
         if (proyectile != null) {
             countShoot--;

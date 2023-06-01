@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class LevelThree extends World
+public class LevelThree extends Level
 {
 
     /**
@@ -18,5 +18,8 @@ public class LevelThree extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(900, 600,1);
         setBackground("background.png");
+    }
+    protected void prepare(){
+        
     }
 }
