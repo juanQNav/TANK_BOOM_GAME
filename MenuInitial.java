@@ -38,6 +38,8 @@ public class MenuInitial extends Menu
         showText("3)How to play (?) ", getWidth()/2, getHeight()/2 + 80);
 
         showText("4)Exit                     ", getWidth()/2, getHeight()/2 + 120);
+        
+        showText("Press enter to select...", getWidth()/2, getHeight()/2 + 250);
 
     }
 

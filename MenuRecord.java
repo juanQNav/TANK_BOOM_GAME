@@ -37,7 +37,9 @@ public class MenuRecord extends Menu
 
         showText("3)Level 3", getWidth()/2, getHeight()/2 + 80);
 
-        showText("4)Menu Initial", getWidth()/2, getHeight()/2 + 120);
+        showText("4) Return to menu", getWidth()/2, getHeight()/2 + 120);
+        
+        showText("Press enter to select...", getWidth()/2, getHeight()/2 + 250);
     }
 
     protected void handleKeys(){

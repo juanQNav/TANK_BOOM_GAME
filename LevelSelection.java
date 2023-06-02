@@ -28,13 +28,15 @@ public class LevelSelection extends Menu
     }
 
     protected void showOptions (){
-        showText("1) Level one   ", getWidth()/2, getHeight()/2);
+        showText("1) Start Level one   ", getWidth()/2, getHeight()/2);
 
-        showText("2) Level two  ", getWidth()/2, getHeight()/2 + 40);
+        showText("2) Start Level two  ", getWidth()/2, getHeight()/2 + 40);
 
-        showText("3) Level three ", getWidth()/2, getHeight()/2 + 80);
+        showText("3) Start Level three ", getWidth()/2, getHeight()/2 + 80);
 
-        showText("4) Menu Initial", getWidth()/2, getHeight()/2 + 120);
+        showText("4) Return to menu Initial", getWidth()/2, getHeight()/2 + 120);
+        
+        showText("Press enter to select...", getWidth()/2, getHeight()/2 + 230);
     }
 
     protected void handleKeys()
@@ -55,24 +57,24 @@ public class LevelSelection extends Menu
         switch(direction){
             case DIRECTION_DOWN: 
                 if(displacement < 120){
-                    showText(" ", getWidth()/2 - 87, getHeight()/2 + displacement);
+                    showText(" ", getWidth()/2 - 115, getHeight()/2 + displacement);
                     displacement += 40;
-                    showText(">", getWidth()/2 - 87, getHeight()/2 + displacement);
+                    showText(">", getWidth()/2 - 115, getHeight()/2 + displacement);
                     direction = -1;
                     Greenfoot.delay(10);
                 }
                 break;
             case DIRECTION_UP:
                 if(displacement > 0){
-                    showText(" ", getWidth()/2 - 87, getHeight()/2 + displacement);
+                    showText(" ", getWidth()/2 - 115, getHeight()/2 + displacement);
                     displacement -= 40;
-                    showText(">", getWidth()/2 - 87, getHeight()/2 + displacement);
+                    showText(">", getWidth()/2 - 115, getHeight()/2 + displacement);
                     direction = -1;
                     Greenfoot.delay(10);
                 }
                 break;
             case DIRECTION_INITIAL:
-                showText(">", getWidth()/2 - 87, getHeight()/2);
+                showText(">", getWidth()/2 - 115, getHeight()/2);
                 break;
         }
     }
