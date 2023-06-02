@@ -12,7 +12,8 @@ public class Eagle extends Actor
 
     private void killEagle() {
         if (lifes == 0) {
-            Greenfoot.setWorld(new GameOver());
+            Level level = (Level) getWorld();
+            Greenfoot.setWorld(new GameOver(level.getScore(), level.getLevel()));
             
             getWorld().removeObject(this);
         }

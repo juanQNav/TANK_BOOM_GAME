@@ -6,12 +6,12 @@ public class Player extends Tank
     private static final String IMAGE_UP = "images/tank_up.png";
     private static final String IMAGE_DOWN = "images/tank_down.png";
     private SimpleTimer timerShieldEffect = new SimpleTimer();
-    private int secondShield = 10;
+    private int secondShield = 15;
     private static int score = 0;
     private boolean playerShield = false;
 
-    public Player(int lifes){
-        super(IMAGE_RIGHT, IMAGE_LEFT, IMAGE_UP, IMAGE_DOWN, lifes);
+    public Player(int countShoot){
+        super(IMAGE_RIGHT, IMAGE_LEFT, IMAGE_UP, IMAGE_DOWN, countShoot);
     }
 
     public void act()

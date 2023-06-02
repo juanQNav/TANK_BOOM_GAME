@@ -3,13 +3,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class LevelOne extends Level
 {
     private SimpleTimer timer = new SimpleTimer();
-    private int time = 90;
+    private int time = 40;
     private int score = 0;
 
     public LevelOne()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(900, 600,1);
+        super(900, 600,1, 1);
         prepare();
         setBackground("background.png");
     }
@@ -23,7 +23,7 @@ public class LevelOne extends Level
 
         spawnEnemyWhenAnotherDied();
 
-        spawPowerUp();
+        spawnPowerUp();
     }
 
     protected void prepare(){

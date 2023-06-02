@@ -10,8 +10,8 @@ public class Enemy extends Tank
     
     
     
-    public Enemy(int lifes){
-         super(IMAGE_RIGHT, IMAGE_LEFT, IMAGE_UP,IMAGE_DOWN, lifes);
+    public Enemy(int countShoot){
+         super(IMAGE_RIGHT, IMAGE_LEFT, IMAGE_UP,IMAGE_DOWN, countShoot);
     }
     
     public void act()

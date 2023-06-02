@@ -3,13 +3,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class LevelTwo extends Level
 {
     private SimpleTimer timer = new SimpleTimer();
-    private int time = 90;
+    private int time = 70;
     private int score = 0;
     
     public LevelTwo()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(900, 600,1);
+        super(900, 600,1,2);
         prepare();
         setBackground("background.png");
     }
@@ -23,16 +23,16 @@ public class LevelTwo extends Level
 
         spawnEnemyWhenAnotherDied();
 
-        spawPowerUp();
+        spawnPowerUp();
     }
     
     protected void prepare () {
         addObject(player, (getWidth() - 50)/2, (getHeight() + 100)/2);
         addObject(eagle, (getWidth() - 50)/2, (getHeight() - 50)/2);
-        addObject(new Enemy(1),70,180);
-        addObject(new Enemy(1),70,500);
-        addObject(new Enemy(1),900,500);
-        addObject(new Enemy(1),900,180);
+        addObject(new Enemy(2),70,180);
+        addObject(new Enemy(2),70,500);
+        addObject(new Enemy(2),900,500);
+        addObject(new Enemy(2),900,180);
         
         
         //player rounded

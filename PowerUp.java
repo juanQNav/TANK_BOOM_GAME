@@ -17,7 +17,7 @@ public abstract class PowerUp extends Actor
     
     protected void flashesImage(){
         setImage(IMAGE_UNSEEN);
-        if(timerFlashes.millisElapsed() >= 200){
+        if(timerFlashes.millisElapsed() >= 500){
             setImage(imagePower);
             timerFlashes.mark();
         }
