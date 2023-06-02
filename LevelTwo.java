@@ -1,34 +1,38 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-<<<<<<< HEAD
-public class LevelTwo extends World
-=======
 public class LevelTwo extends Level
->>>>>>> 589893f4391c2b536d1d182bb6bea9fc5f160fc8
 {
-
+    private SimpleTimer timer = new SimpleTimer();
+    private int time = 90;
+    private int score = 0;
+    
     public LevelTwo()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-<<<<<<< HEAD
-        super(900, 600, 1);
-        prepare();
-=======
         super(900, 600,1);
+        prepare();
         setBackground("background.png");
     }
-    protected void prepare(){
-        
->>>>>>> 589893f4391c2b536d1d182bb6bea9fc5f160fc8
+    
+    public void act()
+    {
+        // Add your action code here.
+        updateHud();
+
+        checkTime();
+
+        spawnEnemyWhenAnotherDied();
+
+        spawPowerUp();
     }
     
-    private void prepare () {
-        addObject(new Player(), (getWidth() - 50)/2, (getHeight() - 50)/2);
-        addObject(new Enemy(),70,180);
-        addObject(new Enemy(),70,500);
-        addObject(new Enemy(),900,500);
-        addObject(new Enemy(),900,180);
-        addObject(new Enemy(), 500, 100);
+    protected void prepare () {
+        addObject(player, (getWidth() - 50)/2, (getHeight() + 100)/2);
+        addObject(eagle, (getWidth() - 50)/2, (getHeight() - 50)/2);
+        addObject(new Enemy(1),70,180);
+        addObject(new Enemy(1),70,500);
+        addObject(new Enemy(1),900,500);
+        addObject(new Enemy(1),900,180);
         
         
         //player rounded
