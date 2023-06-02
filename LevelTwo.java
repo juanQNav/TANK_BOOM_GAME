@@ -1,17 +1,25 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+<<<<<<< HEAD
 public class LevelTwo extends World
+=======
+public class LevelTwo extends Level
+>>>>>>> 589893f4391c2b536d1d182bb6bea9fc5f160fc8
 {
 
-    /**
-     * Constructor for objects of class LevelTwo.
-     * 
-     */
     public LevelTwo()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+<<<<<<< HEAD
         super(900, 600, 1);
         prepare();
+=======
+        super(900, 600,1);
+        setBackground("background.png");
+    }
+    protected void prepare(){
+        
+>>>>>>> 589893f4391c2b536d1d182bb6bea9fc5f160fc8
     }
     
     private void prepare () {

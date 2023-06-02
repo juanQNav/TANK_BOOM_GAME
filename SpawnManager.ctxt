@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=SpawnManager
+comment1.params=world
+comment1.target=SpawnManager(greenfoot.World)
+comment2.params=object
+comment2.target=void\ spawnObject(greenfoot.Actor)
+comment3.params=x\ y
+comment3.target=boolean\ isValidSpawnLocation(int,\ int)
+numComments=4

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Eagle
+comment1.params=
+comment1.target=Eagle()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ killEagle()
+comment4.params=
+comment4.target=int\ getLifes()
+comment5.params=lifes
+comment5.target=void\ updateLife(int)
+numComments=6

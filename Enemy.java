@@ -2,54 +2,65 @@ import greenfoot.*;
 
 public class Enemy extends Tank
 {
-    private SimpleTimer timer = new SimpleTimer();
-    private SimpleTimer timerShoot = new SimpleTimer();
+    private static final String IMAGE_RIGHT = "images/tank2_right.png";
+    private static final String IMAGE_LEFT = "images/tank2_left.png";
+    private static final String IMAGE_UP = "images/tank2_up.png";
+    private static final String IMAGE_DOWN = "images/tank2_down.png";
+    private SimpleTimer timerMove = new SimpleTimer();
     
-    public Enemy(){
-        images = new String[4];
-
-        images[DIRECTION_RIGHT] = new String(
-            "images/tank2_right.png"
-        );
-        images[DIRECTION_LEFT] = new String(
-            "images/tank2_left.png"
-        );
-        images[DIRECTION_UP] = new String(
-            "images/tank2_up.png"
-        );
-        images[DIRECTION_DOWN] = new String(
-            "images/tank2_down.png"
-        );        
-        setImage(images[DIRECTION_RIGHT]);
+    
+    
+    public Enemy(int lifes){
+         super(IMAGE_RIGHT, IMAGE_LEFT, IMAGE_UP,IMAGE_DOWN, lifes);
     }
-
+    
     public void act()
     {
-        checkCollisions();
+        if(isActing()){
 
-        handleImageSelector();
+            checkCollisions();
 
-        randomMove();
-        
-        atack();
+            handleImageSelector();
+
+            randomMove();
+
+            atack();
+        }
+        checkCountShoot();
     }
 
     private void randomMove(){
-        if(timer.millisElapsed() >= 2000){
+        if(timerMove.millisElapsed() >= 2000){
             direction = (int) (Math.random() * 4);
-            timer.mark();
+            timerMove.mark();
         }
         moveTank();
     }
+
     private void atack(){
         if(timerShoot.millisElapsed() >= 700){
-             shoot();
-             timerShoot.mark();
+            shoot();
+            timerShoot.mark();
         }
     }
+
     protected void shoot(){
         World world = getWorld();
-        
-        world.addObject(new Proyectile(direction, true), getX(), getY());
+
+        world.addObject(new Projectile(direction, true), getX(), getY());
     }
+
+    protected void checkCountShoot() {
+        if (countShoot <= 0 && isActing()) {
+            showBoomExplodes();
+            acting = false;
+            boom_delay.mark();
+        }
+        if (!isActing() && boom_delay.millisElapsed() >= 200) {
+            Level level =(Level) getWorld();
+            level.updateEnemyDied(1);
+            getWorld().removeObject(this);
+        }
+    }
+
 }

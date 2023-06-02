@@ -1,15 +1,19 @@
 #BlueJ class context
 comment0.target=Player
-comment1.params=
-comment1.target=Player()
+comment1.params=lifes
+comment1.target=Player(int)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ handleKeys()
 comment4.params=
-comment4.target=void\ updateHud()
-comment5.params=score
-comment5.target=void\ setScore(int)
+comment4.target=void\ shoot()
+comment5.params=
+comment5.target=void\ checkCountShoot()
 comment6.params=
-comment6.target=void\ shoot()
-numComments=7
+comment6.target=void\ handleShield()
+comment7.params=playerShield
+comment7.target=void\ setplayerShield(boolean)
+comment8.params=
+comment8.target=boolean\ getPlayerShield()
+numComments=9

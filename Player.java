@@ -1,38 +1,31 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Player extends Tank
-{   
+{       
+    private static final String IMAGE_RIGHT = "images/tank_right.png";
+    private static final String IMAGE_LEFT = "images/tank_left.png";
+    private static final String IMAGE_UP = "images/tank_up.png";
+    private static final String IMAGE_DOWN = "images/tank_down.png";
+    private SimpleTimer timerShieldEffect = new SimpleTimer();
+    private int secondShield = 10;
     private static int score = 0;
-    private static final int OFFSET_PROYECTILE = 5;
-    private SimpleTimer timer = new SimpleTimer();
-    
-    public Player(){
-        images = new String[4];
+    private boolean playerShield = false;
 
-        images[DIRECTION_RIGHT] = new String(
-            "images/tank_right.png"
-        );
-        images[DIRECTION_LEFT] = new String(
-            "images/tank_left.png"
-        );
-        images[DIRECTION_UP] = new String(
-            "images/tank_up.png"
-        );
-        images[DIRECTION_DOWN] = new String(
-            "images/tank_down.png"
-        );        
-        setImage(images[DIRECTION_RIGHT]);
+    public Player(int lifes){
+        super(IMAGE_RIGHT, IMAGE_LEFT, IMAGE_UP, IMAGE_DOWN, lifes);
     }
 
     public void act()
     {
-        handleKeys();
+        if(isActing()){
+            handleKeys();
 
-        handleImageSelector();
+            handleImageSelector();
 
-        checkCollisions();
+            checkCollisions();
 
-        updateHud();
-
+            handleShield();
+        }
+        checkCountShoot();
     }
 
     private void handleKeys(){
@@ -48,25 +41,51 @@ public class Player extends Tank
         }else if(Greenfoot.isKeyDown("down")){
             direction = DIRECTION_DOWN;
             moveTank();
-        }else if(Greenfoot.isKeyDown("space")){
-            if(timer.millisElapsed()>=250){
-               shoot(); 
-               timer.mark();
+        }
+        if(Greenfoot.isKeyDown("space")){
+            if(timerShoot.millisElapsed() >= 250){
+                shoot(); 
+                timerShoot.mark();
             }
         }
     }
 
-    private void updateHud(){
-        World world = getWorld();
-        world.showText("Score: " + score, world.getWidth() - 100,20);
-    }
-    
-    public void setScore(int score){
-        this.score += score;
-    }
     protected void shoot(){
         World world = getWorld();
-        
-        world.addObject(new Proyectile(direction, false), getX(), getY());
+
+        world.addObject(new Projectile(direction, false), getX(), getY());
+    }
+
+    protected void checkCountShoot(){
+        if(countShoot < previousCountShoot && isActing()){
+            showBoomExplodes();
+            acting = false;
+            boom_delay.mark();
+            previousCountShoot = countShoot;
+        }
+
+        if(boom_delay.millisElapsed() >= 500 && !isActing()){
+            World world = getWorld();
+            setLocation((world.getWidth() - 50)/2,(world.getHeight() + 100)/2);    
+            acting = true;
+            boom_delay.mark();
+        }
+    }
+
+    private void handleShield(){
+        if(secondShield == 0){
+            playerShield = false;
+        }else if (timerShieldEffect.millisElapsed() >= 1000 && playerShield) {
+            secondShield--;
+            timerShieldEffect.mark();
+        }
+    }
+
+    public void setplayerShield(boolean playerShield){
+        this.playerShield = playerShield;
+    }
+
+    public boolean getPlayerShield(){
+        return playerShield;
     }
 }

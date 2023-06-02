@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Enemy
-comment1.params=
-comment1.target=Enemy()
+comment1.params=lifes
+comment1.target=Enemy(int)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
@@ -10,4 +10,6 @@ comment4.params=
 comment4.target=void\ atack()
 comment5.params=
 comment5.target=void\ shoot()
-numComments=6
+comment6.params=
+comment6.target=void\ checkCountShoot()
+numComments=7
