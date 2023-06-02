@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=FileManager
+comment1.params=score\ time
+comment1.target=void\ registerScore(int,\ int)
+comment1.text=public\ static\ void\ main(String[]\ args)\ {\r\n\ \ \ \ \ \ \ \ registerScore(100,\ 10);\r\n\ \ \ \ \ \ \ \ registerScore(200,\ 15);\r\n\ \ \ \ \ \ \ \ registerScore(150,\ 12);\r\n\r\n\ \ \ \ \ \ \ \ List<Score>\ scores\ \=\ getAllScores();\r\n\ \ \ \ \ \ \ \ System.out.println("Puntajes\ registrados\:");\r\n\ \ \ \ \ \ \ \ for\ (Score\ score\ \:\ scores)\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ System.out.println(score);\r\n\ \ \ \ \ \ \ \ }\r\n}
+comment2.params=
+comment2.target=java.util.List\ getAllScores()
+numComments=3
